@@ -21,10 +21,9 @@ MONTH_TO_SEASON = {
 
 
 def get_season(month, hemisphere):
-    """Determine season based on month and hemisphere."""
-    return MONTH_TO_SEASON.get(
-        hemisphere.lower(), {}
-    ).get(month, "Unknown")
+    """Look up the season using a normalised hemisphere."""
+    hemisphere = hemisphere.strip().lower()
+    return MONTH_TO_SEASON.get(hemisphere, {}).get(month, "Unknown")
 
 
 def get_advice(season):
@@ -57,7 +56,7 @@ def main():
             print("Error: Month must be between 1 and 12.")
             return
 
-        if hemisphere not in ["northern", "southern"]:
+        if hemisphere not in MONTH_TO_SEASON: ["northern", "southern"]:
             print("Error: Hemisphere must be Northern or Southern.")
             return
 
