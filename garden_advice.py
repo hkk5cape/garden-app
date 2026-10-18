@@ -27,6 +27,8 @@ def get_season(month, hemisphere):
 
 
 def get_advice(season):
+"""Return gardening advice from the shared season lookup."""
+return GARDENING_ADVICE.get(season, "Invalid season entered.")
     """Return gardening advice for a season."""
     advice = {
         "Summer": "Water plants regularly and mulch to retain moisture.",
